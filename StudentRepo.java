@@ -1,3 +1,5 @@
+import util.Input;
+
 import java.io.*;
 import java.util.List;
 
@@ -42,7 +44,13 @@ public static StudentRepo getInstance() throws IOException, ClassNotFoundExcepti
 
     @Override
     public void update(Student student) {
-
+        if (student != null) {
+student.setName(Input.inputString("Enter name:"));
+student.setAge(Input.inputNum("Enter age:"));
+student.setPhoneNumber(Input.inputString("Enter phone number: "));
+student.setAddress(Input.inputString("Enter Address:"));
+uploadData();
+        }
     }
 
     @Override
@@ -52,6 +60,7 @@ public static StudentRepo getInstance() throws IOException, ClassNotFoundExcepti
 
     @Override
     public void delete(Student student) {
-
+students.remove(student);
+uploadData();
     }
 }
